@@ -1,0 +1,11 @@
+version: "3"
+name: "code-analysis"
+services:
+  aspnet-dev:
+    build: ./image/aspnet-dev
+    container_name: "aspnet-dev"
+    ports:
+      - 5000:5000
+    volumes:
+      - ./aspnet:/app
+    command: ["dotnet", "watch", "run"]
