@@ -1,11 +1,15 @@
 version: "3"
 name: "code-analysis"
 services:
-  aspnet-dev:
-    build: ./image/aspnet-dev
-    container_name: "aspnet-dev"
+  node-dev:
+    build: ./image/node-dev
+    container_name: "node-dev"
     ports:
-      - 5000:5000
+      - 3000:3000
+      - 9229:9229
     volumes:
-      - ./aspnet:/app
-    command: ["dotnet", "watch", "run"]
+      - ./node:/app
+    init: true
+    stdin_open: true
+    tty: true
+    command: [ tail, -f, /dev/null ]
